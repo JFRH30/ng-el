@@ -1,1 +1,6 @@
-<app-bubbles></app-bubbles> <app-chatbox></app-chatbox>
+<mat-sidenav-container class="h-100">
+  <mat-sidenav-content>
+    <app-chat-box (clicked)="sidenav.toggle()"></app-chat-box>
+  </mat-sidenav-content>
+  <mat-sidenav position="end" mode="push" #sidenav> <app-chat-list></app-chat-list> </mat-sidenav>
+</mat-sidenav-container>
