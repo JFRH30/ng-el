@@ -24,8 +24,7 @@ export class AppModule {
   ngDoBootstrap() {
     // this is the constructor.
     const el = createCustomElement(ChatComponent, { injector: this.injector });
-
     // this is where we let the window knows that there is chat-component element.
-    window.customElements.define('chat-component', el);
+    customElements.define('chat-component', el);
   }
 }

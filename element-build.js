@@ -8,7 +8,6 @@ const concat = require('concat');
     './dist/ng-el/main.js',
   ];
   await fs.ensureDir('elements');
-  await concat(files, 'elements/framework-poll.js');
+  await concat(files, 'elements/chat.js');
   await fs.copyFile('./dist/ng-el/styles.css', 'elements/styles.css');
-  await fs.copy('./dist/ng-el/assets/', 'elements/assets/');
 })();
