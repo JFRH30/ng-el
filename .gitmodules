@@ -1,0 +1,3 @@
+[submodule "modules/ng-simplest"]
+	path = modules/ng-simplest
+	url = https://github.com/thruthesky/ng-simplest.git
