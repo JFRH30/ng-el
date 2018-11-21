@@ -7,37 +7,57 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { createCustomElement } from '@angular/elements';
 
+import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
+
 // Material Module
 import {
   MatButtonModule,
   MatFormFieldModule,
   MatIconModule,
+  MatInputModule,
   MatListModule,
   MatSidenavModule,
   MatToolbarModule,
 } from '@angular/material';
 
+import { ScrollDispatchModule } from '@angular/cdk/scrolling';
+
 // Components to be angular elements hahaha.
 import { ChatComponent } from './chat/chat.component';
 import { ChatListComponent } from './chat/chat-list/chat-list.component';
 import { ChatBoxComponent } from './chat/chat-box/chat-box.component';
+import { RoomComponent } from './room/room.component';
+import { RoomListComponent } from './room-list/room-list.component';
+import { SocketIoService } from './socket-io/socket-io.service';
+
+const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
 
 @NgModule({
-  declarations: [AppComponent, ChatComponent, ChatListComponent, ChatBoxComponent],
+  declarations: [
+    AppComponent,
+    ChatComponent,
+    ChatListComponent,
+    ChatBoxComponent,
+    RoomComponent,
+    RoomListComponent,
+  ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    SocketIoModule.forRoot(config),
     MatButtonModule,
     MatFormFieldModule,
     MatIconModule,
+    MatInputModule,
     MatListModule,
     MatSidenavModule,
     MatToolbarModule,
+    ScrollDispatchModule,
   ],
-  entryComponents: [ChatComponent, ChatListComponent, ChatBoxComponent],
-  providers: [],
+  // entryComponents: [ChatComponent, ChatListComponent, ChatBoxComponent],
+  providers: [SocketIoService],
   bootstrap: [AppComponent],
 })
 export class AppModule {

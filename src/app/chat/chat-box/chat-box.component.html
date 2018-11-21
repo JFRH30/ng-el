@@ -1,4 +1,20 @@
-<mat-toolbar class="justify-content-between">
-  <span>[room name]</span>
-  <button mat-icon-button (click)="onClick()"><mat-icon color="primary"> menu </mat-icon></button>
+<mat-toolbar>
+  <span>[room name]</span> <span class="spacer"></span>
+  <button class="mx-3 border" mat-icon-button><mat-icon color="primary"> search </mat-icon></button>
+  <button class="border" mat-icon-button (click)="onClick()">
+    <mat-icon color="primary"> more_vert </mat-icon>
+  </button>
 </mat-toolbar>
+
+<main class="chat-convo"></main>
+
+<section id="comment-box-container">
+  <form class="d-flex" action="">
+    <mat-form-field class="w-100 mx-3 mt-3 p-0" appearance="outline" color="white">
+      <textarea matInput name="content" id="comment-box"></textarea>
+    </mat-form-field>
+    <button class="align-self-center mr-3" mat-icon-button>
+      <mat-icon color="primary" maxLength="3"> send </mat-icon>
+    </button>
+  </form>
+</section>

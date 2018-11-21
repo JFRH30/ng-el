@@ -2,5 +2,7 @@
   <mat-sidenav-content>
     <app-chat-box (clicked)="sidenav.toggle()"></app-chat-box>
   </mat-sidenav-content>
-  <mat-sidenav position="end" mode="push" #sidenav> <app-chat-list></app-chat-list> </mat-sidenav>
+  <mat-sidenav class="d-flex flex-row" position="end" mode="over" #sidenav>
+    <app-chat-list></app-chat-list>
+  </mat-sidenav>
 </mat-sidenav-container>
