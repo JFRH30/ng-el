@@ -30,7 +30,7 @@ import { RoomComponent } from './room/room.component';
 import { RoomListComponent } from './room-list/room-list.component';
 import { SocketIoService } from './socket-io/socket-io.service';
 
-const config: SocketIoConfig = { url: 'http://localhost:4444', options: {} };
+const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
   declarations: [
