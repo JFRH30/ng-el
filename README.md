@@ -6,7 +6,6 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 - angular material
 - socket.io
-- simplest API
 
 ## Goal to build
 
