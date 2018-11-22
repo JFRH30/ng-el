@@ -26,21 +26,12 @@ import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 import { ChatComponent } from './chat/chat.component';
 import { ChatListComponent } from './chat/chat-list/chat-list.component';
 import { ChatBoxComponent } from './chat/chat-box/chat-box.component';
-import { RoomComponent } from './room/room.component';
-import { RoomListComponent } from './room-list/room-list.component';
 import { SocketIoService } from './socket-io/socket-io.service';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ChatComponent,
-    ChatListComponent,
-    ChatBoxComponent,
-    RoomComponent,
-    RoomListComponent,
-  ],
+  declarations: [AppComponent, ChatComponent, ChatListComponent, ChatBoxComponent],
   imports: [
     BrowserModule,
     FormsModule,
@@ -58,7 +49,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
   ],
   entryComponents: [ChatComponent, ChatListComponent, ChatBoxComponent],
   providers: [SocketIoService],
-  bootstrap: [AppComponent],
+  bootstrap: [AppComponent], // remove this when compiling angular element.
 })
 export class AppModule {
   constructor(private injector: Injector) {}
