@@ -56,7 +56,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MatToolbarModule,
     ScrollDispatchModule,
   ],
-  // entryComponents: [ChatComponent, ChatListComponent, ChatBoxComponent],
+  entryComponents: [ChatComponent, ChatListComponent, ChatBoxComponent],
   providers: [SocketIoService],
   bootstrap: [AppComponent],
 })

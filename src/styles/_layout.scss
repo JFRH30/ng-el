@@ -1,4 +1,54 @@
 // this will contain styles for dividing the page.
+mat-toolbar {
+  height: 2.5em !important;
+}
+
 .spacer {
   flex: 1 1 auto;
+}
+
+.border {
+  height: auto;
+  width: auto;
+  padding: 0.2em;
+  border: 0.1rem solid lightgrey;
+  line-height: 0;
+}
+
+.chat-convo {
+  height: calc(100% - (2.5em + 6rem));
+  overflow-y: scroll;
+  background: blueviolet;
+}
+
+#comment-box-container {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  height: 6rem;
+}
+
+#comment-box {
+  font-size: 0.75em;
+}
+
+#chat-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.in-bubbles {
+  padding: 1em;
+  margin: 1em;
+  align-self: flex-end;
+  border-radius: 0.5rem;
+  background: white;
+}
+
+.out-bubbles {
+  padding: 1em;
+  margin: 1em;
+  align-self: flex-start;
+  border-radius: 0.5rem;
+  background: lightslategray;
 }

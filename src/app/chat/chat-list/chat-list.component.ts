@@ -10,11 +10,24 @@ import { Room } from '../../socket-io/room.interface';
 })
 export class ChatListComponent implements OnInit, OnDestroy {
   rooms: Observable<Room[]>;
-  constructor(private socket: SocketIoService) {
-    this.socket.getRooms();
+
+  constructor(private socketIoService: SocketIoService) {}
+
+  ngOnInit() {
+    this.rooms = this.socketIoService.rooms;
   }
 
-  ngOnInit() {}
-
   ngOnDestroy() {}
+
+  onCreateRoom() {
+    const room = {
+      title: 'Test Room',
+      messages: [],
+    };
+    this.socketIoService.addRoom(room);
+  }
+
+  onEnterRoom(id) {
+    this.socketIoService.enterRoom(id);
+  }
 }

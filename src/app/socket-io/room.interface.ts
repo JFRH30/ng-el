@@ -1,6 +1,6 @@
 export interface Room {
-  id: string;
+  id?: number;
   title: string;
-  owners: { userId: string; userName: string }[];
+  // owners: { userId: string; userName: string }[];
   messages?: { userId: string; userName: string; message: string; date: string }[];
 }

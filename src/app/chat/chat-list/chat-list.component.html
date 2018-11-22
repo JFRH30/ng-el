@@ -1,75 +1,18 @@
-<mat-toolbar> <span>[Header]</span> </mat-toolbar>
+<mat-toolbar>
+  <span>Rooms</span> <span class="spacer"></span>
+  <button class="border" mat-icon-button (click)="onCreateRoom()">
+    <mat-icon color="primary"> add </mat-icon>
+  </button>
+</mat-toolbar>
+
 <mat-list>
   <mat-divider></mat-divider>
-  <mat-list-item>
+  <mat-list-item *ngFor="let room of (rooms | async)" (click)="onEnterRoom(room.id)">
     <img
       matListAvatar
       src="https://images.pexels.com/photos/799463/pexels-photo-799463.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
       alt=""
     />
-    <p matLine>Name</p>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item>
-    <img
-      matListAvatar
-      src="https://images.pexels.com/photos/799463/pexels-photo-799463.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-      alt=""
-    />
-    <p matLine>Name</p>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item>
-    <img
-      matListAvatar
-      src="https://images.pexels.com/photos/799463/pexels-photo-799463.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-      alt=""
-    />
-    <p matLine>Name</p>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item>
-    <img
-      matListAvatar
-      src="https://images.pexels.com/photos/799463/pexels-photo-799463.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-      alt=""
-    />
-    <p matLine>Name</p>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item>
-    <img
-      matListAvatar
-      src="https://images.pexels.com/photos/799463/pexels-photo-799463.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-      alt=""
-    />
-    <p matLine>Name</p>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item>
-    <img
-      matListAvatar
-      src="https://images.pexels.com/photos/799463/pexels-photo-799463.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-      alt=""
-    />
-    <p matLine>Name</p>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item>
-    <img
-      matListAvatar
-      src="https://images.pexels.com/photos/799463/pexels-photo-799463.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-      alt=""
-    />
-    <p matLine>Name</p>
-  </mat-list-item>
-  <mat-divider></mat-divider>
-  <mat-list-item>
-    <img
-      matListAvatar
-      src="https://images.pexels.com/photos/799463/pexels-photo-799463.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
-      alt=""
-    />
-    <p matLine>Name</p>
+    <p matLine>{{ room.title }}</p>
   </mat-list-item>
 </mat-list>

@@ -1,46 +1,32 @@
 import { Injectable } from '@angular/core';
 import { Socket } from 'ngx-socket-io';
+import { Room } from './room.interface';
 
 @Injectable()
 export class SocketIoService {
   constructor(private socket: Socket) {}
 
-  /**
-   * this will emit an event 'getRoom' and node server will listen to this and give the specific room.
-   * @param id to refernece the room we need.
-   */
-  getRoom(id: string) {
-    this.socket.emit('getRoom', id);
+  rooms = this.socket.fromEvent<Room[]>('rooms');
+  currentRoom = this.socket.fromEvent<Room>('room');
+
+  // for registration.
+  addUser(user) {
+    this.socket.emit('addUser', user);
   }
 
-  /**
-   * this will emit 'getRooms' event and node server will listen to this and give all rooms this user has.
-   */
-  getRooms() {
-    this.socket.emit('getRooms');
+  // create room event.
+  addRoom(room) {
+    this.socket.emit('addRoom', room);
   }
 
-  /**
-   * @desc will emit 'addRoom' event and node server will listen to this and create the room.
-   */
-  addRoom() {
-    this.socket.emit('addRoom', {});
+  // enter room event.
+  enterRoom(id) {
+    console.log(id);
+    this.socket.emit('enterRoom', id);
   }
 
-  /**
-   * @desc will emit 'startChat' event.
-   * this will only happen they start convo in specific room.
-   */
-  startChat(id: string) {
-    this.socket.emit('startChat', id);
-  }
-
-  /**
-   * @desc will emit 'deleteRoom' event and node will listen to this and delete the room.
-   * @param id to reference the specific room.
-   * Note: use this when user really want to delete the room to his/her room list.
-   */
-  deleteRoom(id: string) {
-    this.socket.emit('deleteRoom', id);
+  // chat event.
+  chat(room) {
+    this.socket.emit('chat', room);
   }
 }
