@@ -27,6 +27,7 @@ export class ChatBoxComponent implements OnInit {
     form.value.date = Date.now();
     room.messages.push(form.value);
     this.app.socket.chat(room);
+    form.reset();
   }
 
   /**
@@ -36,6 +37,7 @@ export class ChatBoxComponent implements OnInit {
    */
   onSubmitName(form: NgForm) {
     this.app.register(form.value);
+    form.reset();
   }
 
   ngOnInit() {}

@@ -28,7 +28,7 @@ export class SocketIoService {
 
   /**
    * will emit 'addRoom' event with room object to the node server,
-   * and the server will emit 'room' event and 'rooms' event with updated data to everyone.
+   * and the server will emit 'room + id' event and 'rooms' event with updated data to everyone.
    * @param room object containing title and the owner.
    */
   addRoom(room) {
@@ -37,7 +37,7 @@ export class SocketIoService {
 
   /**
    * this will send id to the node server,
-   * and the server will emit an event 'room' that we can listen.
+   * and the server will emit an event 'room + id' that we can listen.
    * @param id reference to the room.
    */
   enterRoom(id) {
