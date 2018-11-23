@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AppService } from '../app.service';
 
 @Component({
   selector: 'app-chat',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./chat.component.scss'],
 })
 export class ChatComponent implements OnInit {
-  constructor() {}
+  constructor(public app: AppService) {}
 
   ngOnInit() {}
 }

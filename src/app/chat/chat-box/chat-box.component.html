@@ -1,35 +1,47 @@
 <mat-toolbar>
-  <span>{{ room.title }}</span> <span class="spacer"></span>
-  <button class="mx-3 border" mat-icon-button><mat-icon color="primary"> search </mat-icon></button>
+  <span>{{ app.room?.title }}</span>
+  <span class="spacer"></span>
+  <button class="mx-3 border" mat-icon-button><mat-icon color="primary">search</mat-icon></button>
   <button class="border" mat-icon-button (click)="onClick()">
-    <mat-icon color="primary"> more_vert </mat-icon>
+    <mat-icon color="primary">more_vert</mat-icon>
   </button>
 </mat-toolbar>
 
 <main class="chat-convo">
-  <div id="chat-container">
-    <div class="in-bubbles">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quos repellat totam
-      necessitatibus aut nobis veritatis dolorum harum nihil sit reiciendis magni rerum soluta
-      beatae, ab ipsa officiis, consequuntur dolore!
-    </div>
-    <div class="in-bubbles">Lorem ipsum dolor sit amet</div>
-    <div class="out-bubbles">
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Saepe quos repellat totam
-      necessitatibus aut nobis veritatis dolorum harum nihil sit reiciendis magni rerum soluta
-      beatae, ab ipsa officiis, consequuntur dolore!
-    </div>
-    <div class="out-bubbles">Lorem ipsum dolor sit</div>
+  <div id="chat-container" class="align-items-center justify-content-center">
+    <!-- this is the conversation or the chats -->
+    <ng-container *ngIf="app.room?.messages?.length">
+      <div
+        *ngFor="let message of app.room?.messages"
+        [class.out-bubbles]="message?.userId !== app.userID"
+        [class.in-bubbles]="message?.userId === app.userID"
+      >
+        {{ message.userName }} :: {{ message.content }}
+      </div>
+    </ng-container>
+
+    <!-- this is the form to set username -->
+    <ng-container *ngIf="!app.isLogged">
+      <div class="card">
+        <form class="p-3" (ngSubmit)="onSubmitName(user)" #user="ngForm">
+          <mat-form-field appearance="outline">
+            <input matInput name="name" type="text" ngModel />
+          </mat-form-field>
+          <button mat-flat-button color="primary" type="submit">Enter</button>
+        </form>
+      </div>
+    </ng-container>
   </div>
 </main>
 
-<section id="comment-box-container">
+<!-- this is the chat box -->
+<section id="chat-box-container">
   <form class="d-flex" (ngSubmit)="onSendChat(chat)" #chat="ngForm">
     <mat-form-field class="w-100 mx-3 mt-3 p-0" appearance="outline" color="white">
-      <textarea matInput name="message" id="comment-box" ngModel></textarea>
+      <textarea matInput name="content" id="chat-box" ngModel></textarea>
     </mat-form-field>
     <button class="align-self-center mr-3" mat-icon-button>
-      <mat-icon color="primary" maxLength="3"> send </mat-icon>
+      <mat-icon color="primary" maxLength="3">send</mat-icon>
     </button>
   </form>
 </section>

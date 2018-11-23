@@ -26,7 +26,7 @@ import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 import { ChatComponent } from './chat/chat.component';
 import { ChatListComponent } from './chat/chat-list/chat-list.component';
 import { ChatBoxComponent } from './chat/chat-box/chat-box.component';
-import { SocketIoService } from './socket-io/socket-io.service';
+import { AppService } from './app.service';
 
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
@@ -48,7 +48,7 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     ScrollDispatchModule,
   ],
   entryComponents: [ChatComponent, ChatListComponent, ChatBoxComponent],
-  providers: [SocketIoService],
+  providers: [AppService],
   bootstrap: [AppComponent], // remove this when compiling angular element.
 })
 export class AppModule {
