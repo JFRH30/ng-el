@@ -13,8 +13,21 @@ export class SocketIoService {
   users = this.socket.fromEvent<User[]>('users'); // hold the collection of users.
   rooms = this.socket.fromEvent<Room[]>('rooms'); // hold the collection of rooms.
 
+  /**
+   * this the currentroom
+   */
   get room() {
     return this.socket.fromEvent<Room>('room' + this.roomId);
+  }
+
+  /**
+   * this is the one who joined the room.
+   */
+  get joinedRoom() {
+    if (this.roomId === 0) {
+      return;
+    }
+    return this.socket.fromEvent<string>('joinRoom' + this.roomId);
   }
   /**
    * will emit 'addUser' event and user object to the node server,
@@ -40,8 +53,12 @@ export class SocketIoService {
    * and the server will emit an event 'room + id' that we can listen.
    * @param id reference to the room.
    */
-  enterRoom(id) {
-    this.socket.emit('enterRoom', id);
+  enterRoom(roomId, username) {
+    const data = {
+      id: roomId,
+      name: username,
+    };
+    this.socket.emit('enterRoom', data);
   }
 
   /**

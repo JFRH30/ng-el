@@ -9,16 +9,15 @@ import { Room } from '../../socket-io/socket-io.interface';
   styleUrls: ['./chat-list.component.scss'],
 })
 export class ChatListComponent implements OnInit, OnDestroy {
-  rooms: Observable<Room[]>;
-
   constructor(public app: AppService) {}
 
-  ngOnInit() {
-    this.rooms = this.app.socket.rooms;
-  }
+  ngOnInit() {}
 
   ngOnDestroy() {}
 
+  /**
+   * will create room with generatedID as room title.
+   */
   onCreateRoom() {
     const room = {
       title: this.app.socket.generateID(),
@@ -27,11 +26,14 @@ export class ChatListComponent implements OnInit, OnDestroy {
     this.app.socket.addRoom(room);
   }
 
+  /**
+   * will send the room id to server and fetch room data.
+   * @param id reference to the room.
+   */
   onEnterRoom(id) {
     this.app.socket.roomId = id;
-    this.app.socket.enterRoom(id);
+    this.app.onEnterRoom(id);
     this.app.loadRoom();
-    console.log(this.app.socket.room);
-    console.log('Room', this.app.room);
+    console.log(this.app.socket.roomId);
   }
 }

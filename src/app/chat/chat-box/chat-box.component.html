@@ -10,6 +10,7 @@
 <main class="chat-convo">
   <div id="chat-container" class="align-items-center justify-content-center">
     <!-- this is the conversation or the chats -->
+    <p *ngIf="(app.socket.joinedRoom | async) as name">{{ name }}</p>
     <ng-container *ngIf="app.room?.messages?.length">
       <div
         *ngFor="let message of app.room?.messages"
@@ -23,11 +24,12 @@
     <!-- this is the form to set username -->
     <ng-container *ngIf="!app.isLogged">
       <div class="card">
+        <h3>Enter Username:</h3>
         <form class="p-3" (ngSubmit)="onSubmitName(user)" #user="ngForm">
           <mat-form-field appearance="outline">
             <input matInput name="name" type="text" ngModel />
           </mat-form-field>
-          <button mat-flat-button color="primary" type="submit">Enter</button>
+          <button class="mx-3" mat-flat-button color="primary" type="submit">Enter</button>
         </form>
       </div>
     </ng-container>

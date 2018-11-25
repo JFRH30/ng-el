@@ -20,13 +20,20 @@ export class AppService {
   }
 
   /**
-   * this will load room on select
+   * this will load the selectd room.
    */
   loadRoom() {
-    this.room = null;
     this.socket.room.subscribe((room) => {
       this.room = room;
     });
+  }
+
+  /**
+   * this will enter the user on a room and broadcast it to everyone in that room.
+   * @param roomId reference to the room.
+   */
+  onEnterRoom(roomId) {
+    this.socket.enterRoom(roomId, this.userName);
   }
 
   /**

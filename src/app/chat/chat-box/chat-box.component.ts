@@ -9,6 +9,9 @@ import { NgForm } from '@angular/forms';
 export class ChatBoxComponent implements OnInit {
   @Output() clicked = new EventEmitter();
 
+  username: string;
+  private _username;
+
   constructor(public app: AppService) {}
 
   onClick() {
@@ -20,7 +23,6 @@ export class ChatBoxComponent implements OnInit {
    * @param form data from chat form.
    */
   onSendChat(form: NgForm) {
-    console.log(this.app.room);
     const room = this.app.room;
     form.value.userId = this.app.userID;
     form.value.userName = this.app.userName;
