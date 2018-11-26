@@ -34,6 +34,5 @@ export class ChatListComponent implements OnInit, OnDestroy {
     this.app.socket.roomId = id;
     this.app.onEnterRoom(id);
     this.app.loadRoom();
-    console.log(this.app.socket.roomId);
   }
 }

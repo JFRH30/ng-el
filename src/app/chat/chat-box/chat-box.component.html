@@ -9,8 +9,8 @@
 
 <main class="chat-convo">
   <div id="chat-container" class="align-items-center justify-content-center">
+    <p *ngIf="username">{{ username + ' has joined' }}</p>
     <!-- this is the conversation or the chats -->
-    <p *ngIf="(app.socket.joinedRoom | async) as name">{{ name }}</p>
     <ng-container *ngIf="app.room?.messages?.length">
       <div
         *ngFor="let message of app.room?.messages"

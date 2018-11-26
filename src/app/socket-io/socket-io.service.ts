@@ -24,11 +24,9 @@ export class SocketIoService {
    * this is the one who joined the room.
    */
   get joinedRoom() {
-    if (this.roomId === 0) {
-      return;
-    }
-    return this.socket.fromEvent<string>('joinRoom' + this.roomId);
+    return this.socket.fromEvent<string>('join' + this.roomId);
   }
+
   /**
    * will emit 'addUser' event and user object to the node server,
    * and the server will emit 'user' event and 'users' event.
@@ -51,7 +49,8 @@ export class SocketIoService {
   /**
    * this will send id to the node server,
    * and the server will emit an event 'room + id' that we can listen.
-   * @param id reference to the room.
+   * @param roomId reference to the room.
+   * @param username name of the user that joined in a room.
    */
   enterRoom(roomId, username) {
     const data = {

@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, AfterViewChecked } from '@angular/core';
 import { AppService } from 'src/app/app.service';
 import { NgForm } from '@angular/forms';
 @Component({
@@ -6,11 +6,10 @@ import { NgForm } from '@angular/forms';
   templateUrl: './chat-box.component.html',
   styleUrls: ['./chat-box.component.scss'],
 })
-export class ChatBoxComponent implements OnInit {
+export class ChatBoxComponent implements OnInit, AfterViewChecked {
   @Output() clicked = new EventEmitter();
 
   username: string;
-  private _username;
 
   constructor(public app: AppService) {}
 
@@ -40,6 +39,10 @@ export class ChatBoxComponent implements OnInit {
   onSubmitName(form: NgForm) {
     this.app.register(form.value);
     form.reset();
+  }
+
+  ngAfterViewChecked() {
+    this.app.socket.joinedRoom.subscribe((data) => (this.username = <string>data));
   }
 
   ngOnInit() {}
