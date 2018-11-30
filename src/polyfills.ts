@@ -85,3 +85,16 @@ import 'zone.js/dist/zone'; // Included with Angular CLI.
  */
 // Add global to window, assigning the value of window itself.
 (window as any).global = window;
+
+// Error that will be thrown if " (window as any).global = window; " is not included.
+// Uncaught ReferenceError: global is not defined
+//     at Object.+SKG (main.js:1)
+//     at f (runtime.js:1)
+//     at Object.cD5x (main.js:1)
+//     at f (runtime.js:1)
+//     at Object.Vo14 (main.js:1)
+//     at f (runtime.js:1)
+//     at Object.gFX4 (main.js:1)
+//     at f (runtime.js:1)
+//     at Module.zUnb (main.js:1)
+//     at f (runtime.js:1)

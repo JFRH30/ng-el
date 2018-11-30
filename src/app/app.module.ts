@@ -42,8 +42,8 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MatToolbarModule
   ],
   entryComponents: [ChatComponent, ChatListComponent, ChatBoxComponent],
-  providers: [AppService],
-  bootstrap: [ChatComponent] // remove this when compiling angular element.
+  providers: [AppService]
+  // bootstrap: [ChatComponent]
 })
 export class AppModule {
   constructor(private injector: Injector) {}

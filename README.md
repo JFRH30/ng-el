@@ -19,25 +19,29 @@ Install Live Server for Angular Element.
 npm i live-server
 ```
 
-Serve Angular
+### Serve Angular
 
 ```bash
 ng serve
 ```
 
-Serve Angular Element
+### Serve Angular Element
 
-```bash 
+- Terminal 1
+
+```bash
 npm run build::element
-```  
+```
 
-run this command to build angular element.
+Run this command to build angular element.
 npm run build is equal `"build::element": "ng build --watch --prod --output-hashing=none --base-href= "`
 
-```bash 
+- Terminal 2
+
+```bash
 live-server --open=dist/ng-el/index.html
-``` 
+```
 
 Live server will serve the output when angular build.
 
-Don't forget to serve the node server.
+## Don't forget to serve the node server.
