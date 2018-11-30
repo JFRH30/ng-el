@@ -2,8 +2,6 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, Injector } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
-import { AppRoutingModule } from './app-routing.module';
-import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { createCustomElement } from '@angular/elements';
 
@@ -17,10 +15,8 @@ import {
   MatInputModule,
   MatListModule,
   MatSidenavModule,
-  MatToolbarModule,
+  MatToolbarModule
 } from '@angular/material';
-
-import { ScrollDispatchModule } from '@angular/cdk/scrolling';
 
 // Components to be angular elements hahaha.
 import { ChatComponent } from './chat/chat.component';
@@ -31,11 +27,10 @@ import { AppService } from './app.service';
 const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
 
 @NgModule({
-  declarations: [AppComponent, ChatComponent, ChatListComponent, ChatBoxComponent],
+  declarations: [ChatComponent, ChatListComponent, ChatBoxComponent],
   imports: [
     BrowserModule,
     FormsModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     SocketIoModule.forRoot(config),
     MatButtonModule,
@@ -44,12 +39,11 @@ const config: SocketIoConfig = { url: 'http://localhost:3000', options: {} };
     MatInputModule,
     MatListModule,
     MatSidenavModule,
-    MatToolbarModule,
-    ScrollDispatchModule,
+    MatToolbarModule
   ],
   entryComponents: [ChatComponent, ChatListComponent, ChatBoxComponent],
   providers: [AppService],
-  bootstrap: [AppComponent], // remove this when compiling angular element.
+  bootstrap: [ChatComponent] // remove this when compiling angular element.
 })
 export class AppModule {
   constructor(private injector: Injector) {}
