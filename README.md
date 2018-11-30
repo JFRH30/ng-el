@@ -27,12 +27,10 @@ ng serve
 
 Serve Angular Element
 
-```bash
-// for angular element
-npm run build::element  // terminal 1
-live-server --open=dist/ng-el/index.html // terminal 2
-```
+`npm run build::element`  run this command to build angular element.
+npm run build is equal `"build::element": "ng build --watch --prod --output-hashing=none --base-href= "`
 
-npm run build is equal `bash "build::element": "ng build --watch --prod --output-hashing=none --base-href= "`
-
+`live-server --open=dist/ng-el/index.html` // to serve the angular element.
 Live server will serve the output when angular build.
+
+Don't forget to serve the node server.
